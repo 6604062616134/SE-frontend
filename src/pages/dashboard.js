@@ -16,7 +16,7 @@ function Dashboard() {
     useEffect(() => {
         const fetchTransactions = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/br/transactions', {
+                const response = await axios.get('https://se-backend-codk.onrender.com/br/transactions', {
                     params: { mode: 'returning' }
                 });
                 setTransactions(response.data.data);
@@ -53,7 +53,7 @@ function Dashboard() {
         }
 
         try {
-            const response = await axios.put('http://localhost:8000/br/admin/accept', {
+            const response = await axios.put('https://se-backend-codk.onrender.com/br/admin/accept', {
                 gameID: transaction.game_id,
                 name: transaction.user_name, // ส่งชื่อผู้ใช้
                 status: 'returning', // หรือ 'borrowed' ขึ้นอยู่กับสถานะ
@@ -85,7 +85,7 @@ function Dashboard() {
         }
     
         try {
-            const response = await axios.post(`http://localhost:8000/notifications/createnoti`, {
+            const response = await axios.post(`https://se-backend-codk.onrender.com/notifications/createnoti`, {
                 gameID: transaction.game_id,
                 userID: transaction.user_id,
                 message: rejectReason, // ส่งเหตุผลที่ปฏิเสธ

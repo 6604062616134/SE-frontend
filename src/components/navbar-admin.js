@@ -10,7 +10,7 @@ function NavbarAdmin({ isMenuOpen, toggleMenu }) {
 
     const handleLogout = async () => {
         try {
-            await axios.post('http://localhost:8000/users/logout', {}, { withCredentials: true });
+            await axios.post('https://se-backend-codk.onrender.com/users/logout', {}, { withCredentials: true });
             localStorage.removeItem('userId');
             window.location.href = '/';
         } catch (error) {
@@ -31,7 +31,7 @@ function NavbarAdmin({ isMenuOpen, toggleMenu }) {
 
     const handleDone = async (reportId, message) => {
         try {
-            const response = await axios.put('http://localhost:8000/reports/updateReport', {
+            const response = await axios.put('https://se-backend-codk.onrender.com/reports/updateReport', {
                 message,
                 status: 'done',
             }, { withCredentials: true });
@@ -56,7 +56,7 @@ function NavbarAdmin({ isMenuOpen, toggleMenu }) {
 
     const fetchReports = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/reports/getReports', { withCredentials: true });
+            const response = await axios.get('https://se-backend-codk.onrender.com/reports/getReports', { withCredentials: true });
             setReports(response.data.data);
         } catch (error) {
             console.error('Error fetching reports:', error);

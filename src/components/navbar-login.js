@@ -22,7 +22,7 @@ function NavbarLogin({ isMenuOpen, toggleMenu }) {
             try {
                 const userId = localStorage.getItem('userId');
                 if (userId) {
-                    const response = await axios.get(`http://localhost:8000/users/${userId}`, { withCredentials: true });
+                    const response = await axios.get(`https://se-backend-codk.onrender.com/users/${userId}`, { withCredentials: true });
                     setUsername(response.data.data.name);
                 } else {
                     console.error('User ID not found in localStorage');
@@ -49,21 +49,21 @@ function NavbarLogin({ isMenuOpen, toggleMenu }) {
     //         }
 
     //         // ดึงข้อมูลการแจ้งเตือนการจอง
-    //         const reserveResponse = await axios.get(`http://localhost:8000/notifications/getnotires/${userId}`, { withCredentials: true });
+    //         const reserveResponse = await axios.get(`https://se-backend-codk.onrender.com/notifications/getnotires/${userId}`, { withCredentials: true });
     //         const reserveNotifications = reserveResponse.data.data.map(notification => ({
     //             ...notification,
     //             type: 'Reserve'
     //         }));
 
     //         // ดึงข้อมูลการแจ้งเตือนการคืน
-    //         const returnResponse = await axios.get(`http://localhost:8000/notifications/getnotireturn/${userId}`, { withCredentials: true });
+    //         const returnResponse = await axios.get(`https://se-backend-codk.onrender.com/notifications/getnotireturn/${userId}`, { withCredentials: true });
     //         const returnNotifications = returnResponse.data.data.map(notification => ({
     //             ...notification,
     //             type: 'Returning'
     //         }));
 
     //         // ดึงข้อมูลการแจ้งเตือนการปฏิเสธ
-    //         const rejectionResponse = await axios.get(`http://localhost:8000/notifications/getnotireject/${userId}`, { withCredentials: true });
+    //         const rejectionResponse = await axios.get(`https://se-backend-codk.onrender.com/notifications/getnotireject/${userId}`, { withCredentials: true });
     //         const rejectionNotifications = rejectionResponse.data.data.map(notification => ({
     //             ...notification,
     //             type: 'Rejection'
@@ -114,9 +114,9 @@ function NavbarLogin({ isMenuOpen, toggleMenu }) {
             };
     
             // ดึงข้อมูลจากแต่ละประเภท
-            const reserveNotifications = await fetchNotifications(`http://localhost:8000/notifications/getnotires/${userId}`, 'Reserve');
-            const returnNotifications = await fetchNotifications(`http://localhost:8000/notifications/getnotireturn/${userId}`, 'Returning');
-            const rejectionNotifications = await fetchNotifications(`http://localhost:8000/notifications/getnotireject/${userId}`, 'Rejection');
+            const reserveNotifications = await fetchNotifications(`https://se-backend-codk.onrender.com/notifications/getnotires/${userId}`, 'Reserve');
+            const returnNotifications = await fetchNotifications(`https://se-backend-codk.onrender.com/notifications/getnotireturn/${userId}`, 'Returning');
+            const rejectionNotifications = await fetchNotifications(`https://se-backend-codk.onrender.com/notifications/getnotireject/${userId}`, 'Rejection');
     
             // รวมการแจ้งเตือนทั้งหมด
             allNotifications = [...reserveNotifications, ...returnNotifications, ...rejectionNotifications];
@@ -151,7 +151,7 @@ function NavbarLogin({ isMenuOpen, toggleMenu }) {
 
     const logout = async () => {
         try {
-            await axios.post('http://localhost:8000/users/logout', {}, { withCredentials: true });
+            await axios.post('https://se-backend-codk.onrender.com/users/logout', {}, { withCredentials: true });
             localStorage.removeItem('userId'); // ลบ userId ออกจาก localStorage เมื่อผู้ใช้ล็อกเอาท์
             navigate('/');
         } catch (error) {
@@ -186,7 +186,7 @@ function NavbarLogin({ isMenuOpen, toggleMenu }) {
                 return;
             }
 
-            await axios.post('http://localhost:8000/reports/createReport', { userID, message: reportMessage }, { withCredentials: true });
+            await axios.post('https://se-backend-codk.onrender.com/reports/createReport', { userID, message: reportMessage }, { withCredentials: true });
             alert('Report submitted successfully!');
             setReportMessage('');
             closeReportModal();

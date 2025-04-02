@@ -24,7 +24,7 @@ function Return() {
             const userId = localStorage.getItem('userId');
             console.log("Fetching borrowed games for user ID:", userId);
     
-            const response = await axios.get(`http://localhost:8000/br/borrowed/${userId}`);
+            const response = await axios.get(`https://se-backend-codk.onrender.com/br/borrowed/${userId}`);
             console.log("Borrowed Games Response:", response.data);
     
             // กรองเฉพาะเกมที่ยังไม่ได้คืนหรือถูกปฏิเสธการคืน
@@ -63,7 +63,7 @@ function Return() {
         try {
             const userId = localStorage.getItem('userId');
 
-            const response = await axios.put(`http://localhost:8000/br/transactions/${game.game_id}/return`, {
+            const response = await axios.put(`https://se-backend-codk.onrender.com/br/transactions/${game.game_id}/return`, {
                 user_id: userId,
                 status: 'returning',
             }, { withCredentials: true });

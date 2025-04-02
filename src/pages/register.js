@@ -17,7 +17,7 @@ function Register() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/users/register', {
+            const response = await axios.post('https://se-backend-codk.onrender.com/users/register', {
                 name,
                 studentId,
                 email,

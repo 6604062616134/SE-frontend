@@ -17,7 +17,7 @@ function History() {
 
                 console.log('User ID:', userId); // ตรวจสอบว่า userId ถูกต้องหรือไม่
 
-                const response = await axios.get(`http://localhost:8000/history?userID=${userId}`);
+                const response = await axios.get(`https://se-backend-codk.onrender.com/history?userID=${userId}`);
 
                 console.log('Response Data:', response.data); // ตรวจสอบข้อมูลที่ได้รับจาก API
 

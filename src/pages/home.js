@@ -37,7 +37,7 @@ function Home() {
                 categoryID: categoryId !== '' ? categoryId : ''
             });
 
-            const response = await axios.get('http://localhost:8000/boardgames', {
+            const response = await axios.get('https://se-backend-codk.onrender.com/boardgames', {
                 params: {
                     name: searchTerm,
                     level: level !== 'Level' ? level : '',
@@ -56,7 +56,7 @@ function Home() {
 
     const fetchBoardgamesRecommended = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/boardgames/recommended');
+            const response = await axios.get('https://se-backend-codk.onrender.com/boardgames/recommended');
             console.log("API Response:", response.data.data);
             setShowRecommended(true);
             setRecommended(response.data.data);
@@ -68,7 +68,7 @@ function Home() {
 
     const fetchGameStatus = async (gameId) => {
         try {
-            const response = await axios.get(`http://localhost:8000/br/getStatus/${gameId}`);
+            const response = await axios.get(`https://se-backend-codk.onrender.com/br/getStatus/${gameId}`);
             console.log("Game Status Response:", response.data);
             setStatus(response.data.data[0].status);
             console.log(response.data.data[0].status);
@@ -91,7 +91,7 @@ function Home() {
         setShowRecommended(false);
         setIsSearching(true); // ตั้งค่า isSearching เป็น true เมื่อเริ่มค้นหา
         try {
-            const response = await axios.get('http://localhost:8000/boardgames', {
+            const response = await axios.get('https://se-backend-codk.onrender.com/boardgames', {
                 params: {
                     name: searchTerm,
                     level: selectedLevel !== 'Level' ? selectedLevel : '',

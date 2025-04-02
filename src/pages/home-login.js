@@ -36,7 +36,7 @@ function Homelogin() {
 
     const fetchBoardgames = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/boardgames', {
+            const response = await axios.get('https://se-backend-codk.onrender.com/boardgames', {
                 params: {
                     name: searchTerm,
                     level: level !== 'Level' ? level : '',
@@ -60,7 +60,7 @@ function Homelogin() {
 
     const fetchBoardgamesRecommended = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/boardgames/recommended');
+            const response = await axios.get('https://se-backend-codk.onrender.com/boardgames/recommended');
             setRecommended(response.data.data);
         } catch (error) {
             console.error("Error fetching recommended boardgames:", error);
@@ -75,7 +75,7 @@ function Homelogin() {
 
         try {
             console.log("Fetching status for game ID:", gameId);
-            const response = await axios.get(`http://localhost:8000/br/getStatus/${gameId}`);
+            const response = await axios.get(`https://se-backend-codk.onrender.com/br/getStatus/${gameId}`);
 
             if (response.data.data.length > 0) {
                 const gameStatus = response.data.data[0].status;
@@ -96,7 +96,7 @@ function Homelogin() {
 
     const fetchUsername = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/user', { withCredentials: true });
+            const response = await axios.get('https://se-backend-codk.onrender.com/user', { withCredentials: true });
             console.log("API Response:", response.data);
         } catch (error) {
             console.error("Error fetching username:", error);
@@ -122,7 +122,7 @@ function Homelogin() {
         }
 
         try {
-            const response = await axios.put(`http://localhost:8000/br/transactions/update`, {
+            const response = await axios.put(`https://se-backend-codk.onrender.com/br/transactions/update`, {
                 gameID: game.boardgame_id,
                 userID: userId,
                 status: 'borrowed',
@@ -159,7 +159,7 @@ function Homelogin() {
         }
 
         try {
-            const response = await axios.post(`http://localhost:8000/reserve/createReservation`, {
+            const response = await axios.post(`https://se-backend-codk.onrender.com/reserve/createReservation`, {
                 gameID: game.boardgame_id,
                 userID: userId,
             }, { withCredentials: true });
@@ -310,7 +310,7 @@ function Homelogin() {
 
     //     // ตรวจสอบสถานะล่าสุดจากฐานข้อมูล
     //     try {
-    //         const response = await axios.get(`http://localhost:8000/br/getStatus/${selectedGame.boardgame_id}`);
+    //         const response = await axios.get(`https://se-backend-codk.onrender.com/br/getStatus/${selectedGame.boardgame_id}`);
 
     //         //const latestStatus = response.data.data[0]?.status;
 
@@ -321,7 +321,7 @@ function Homelogin() {
 
 
     //         try {
-    //             const reservationResponse = await axios.post(`http://localhost:8000/reserve/createReservation`, {
+    //             const reservationResponse = await axios.post(`https://se-backend-codk.onrender.com/reserve/createReservation`, {
     //                 gameID: selectedGame.boardgame_id,
     //                 userID: userId
     //             }, { withCredentials: true });
@@ -357,7 +357,7 @@ function Homelogin() {
     //     }
 
     //     try {
-    //         const response = await axios.put(`http://localhost:8000/br/transactions/update`, {
+    //         const response = await axios.put(`https://se-backend-codk.onrender.com/br/transactions/update`, {
     //             gameID: game.boardgame_id,
     //             userID: userId,
     //             status: 'borrowed',
@@ -382,7 +382,7 @@ function Homelogin() {
 
     const createReturnDate = async (gameID, userID, hour) => {
         try {
-            const response = await axios.put(`http://localhost:8000/br/createReturnDate`, {
+            const response = await axios.put(`https://se-backend-codk.onrender.com/br/createReturnDate`, {
                 gameID: gameID,
                 userID: userID,
                 hour: hour,
@@ -415,7 +415,7 @@ function Homelogin() {
     //     }
 
     //     try {
-    //         const response = await axios.put(`http://localhost:8000/br/transactions/update`, {
+    //         const response = await axios.put(`https://se-backend-codk.onrender.com/br/transactions/update`, {
     //             gameID: game.boardgame_id,
     //             userID: userId,
     //             status: 'reserved',
